@@ -1,0 +1,31 @@
+﻿<ion-modal-view cache-view="false">
+    <ion-header-bar>
+        <h1 class="title">판매 물품 등록</h1>
+        <div class="buttons">
+            <button class="button button-dark" ng-click="closeSellPage()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+
+        <form ng-submit="doSell()" enctype="multipart/form-data">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">물품 이름</span>
+                    <input type="text" placeholder="Name of Product" ng-model="productData.name">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">설명</span>
+                    <textarea style="height: 150px;" placeholder="Comments" ng-model="productData.description"></textarea>
+                </label>
+                <label class="item">
+                    <input type="file" id="file" />
+                    
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" ng-click="uploadFile()" type="submit">등록</button>
+                </label>
+                
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

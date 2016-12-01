@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!--For users deploying their apps to Windows 8.1 or Android Gingerbread, platformOverrided.js
+    will inject platform-specific code from the /merges folder -->
+    <script src="js/platformOverrides.js"></script>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
+
+  </head>
+
+<body ng-app="shoppingApp">
+
+    <ion-nav-view></ion-nav-view>
+
+</body>
+
+<!--
+  <body ng-app="shoppingApp" ng-controller="mainController">
+  
+    <ion-pane>
+      <ion-header-bar class="bar-light">
+        <h1 class="title">Let's Shopping</h1>
+      </ion-header-bar>
+  
+        <ion-content>
+            <ion-nav-view></ion-nav-view>
+            <section class="list">
+                <article class="item" ng-repeat="itemUnit in ItemList">
+                    <h2>{{itemUnit.name}}</h2>
+                    <p>{{itemUnit.id}}</p>
+                </article>
+            </section>
+            <ion-infinite-scroll 
+            distance="1%">
+  
+            </ion-infinite-scroll>
+        </ion-content>
+        <div class="tabs tabs-icon-top">
+            <a class="tab-item" href="#">
+                <i class="icon ion-home"></i>쇼핑홈
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-navicon-round"></i>카테고리
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-bag"></i>장바구니
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-more"></i>더보기
+            </a>
+        </div>
+    </ion-pane>
+  </body>
+    -->
+</html>
