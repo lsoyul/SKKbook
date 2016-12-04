@@ -123,6 +123,24 @@
              $scope.$broadcast('scroll.refreshComplete');
          });
     };
+
+    // Time table
+    $scope.events = [{
+        "id": "12",
+        "text": "미적분학",
+        "start": "2016-12-07T11:30:00",
+        "end": "2016-12-07T16:30:00"
+    }];
+
+    $scope.dayConfig = {
+        visible: false,
+        viewType: "Day"
+    };
+
+    $scope.weekConfig = {
+        viewType: "Week"
+    };
+
     
 })
 
@@ -210,4 +228,3 @@
         $state.go('welcome');
     }
 })
-;
