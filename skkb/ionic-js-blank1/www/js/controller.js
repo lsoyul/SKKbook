@@ -96,6 +96,8 @@
     // Loading Data
     $scope.ItemList = "";
 
+
+
     $http
         ({
             method: "GET",
