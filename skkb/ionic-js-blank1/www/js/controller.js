@@ -2,7 +2,7 @@
 
 .controller('mainController', function ($scope, $ionicModal, $timeout, $http, $state,$ionicPopup,  dataShare) {
     
-   
+    $scope.isSearchMode = false;
 
     $scope.loginData = {};
     $scope.yourName = "Unknown";
@@ -16,6 +16,13 @@
     }).then(function (modal) {
         $scope.modal = modal;
     });
+
+    // Do search
+    $scope.doSearch = function(){
+        if ($scope.isSearchMode == false) $scope.isSearchMode = true;
+        else
+            $scope.isSearchMode = false;
+    };
     
     // Triggered in the login modal to close it
     $scope.closeSellPage = function () {
