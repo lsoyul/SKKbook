@@ -63,6 +63,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         controller: 'mainController'
 
     })
+    .state('app.mySellPage', {
+        url: '/mySellPage',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/mySellPage.html'
+            }
+        },
+
+        controller: 'mainController'
+    })
 
     $urlRouterProvider.otherwise('/welcome');
 

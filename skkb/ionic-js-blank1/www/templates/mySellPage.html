@@ -1,0 +1,47 @@
+﻿
+<ion-view cache-view="false" view-title="My books on Sale">
+
+    <ion-pane>
+        <ion-content>
+            <ion-refresher pulling-text="Pull to refresh..."
+                           on-refresh="doRefresh()">
+            </ion-refresher>
+
+            <ion-nav-view></ion-nav-view>
+
+            <section class="list">
+                <div class="card" ng-repeat="itemUnit in ItemList | filter:yourName">
+                    <article class="item item-text-wrap">
+                        <img css style="width:200px; height:200px;" src="http://sgykim15.cafe24.com/teamf/upload/{{itemUnit.name_img}}" />
+                        <div class="list">
+                            <a class="item item-icon-left">
+                                <i class="icon ion-checkmark"></i>
+                                <h2>{{itemUnit.name_prod}}</h2>
+                            </a>
+                            <a class="item item-icon-left" href="#">
+                                <i class="icon ion-android-person"></i>
+                                <p>{{itemUnit.id_seller}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-chatbox-working"></i>
+                                <p>{{itemUnit.description}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-wrench"></i>
+                                <p>물품상태: {{itemUnit.status}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-ios-arrow-forward"></i>
+                                <p>희망가격: {{itemUnit.price}} 원</p>
+                            </a>
+
+                            <button class="button icon-right button-positive">판매중</button>
+                            <a class="button icon-right ion-chevron-right button-calm">판매 취소</a>
+
+                    </article>
+                </div>
+
+            </section>
+        </ion-content>
+    </ion-pane>
+</ion-view>
