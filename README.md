@@ -14,6 +14,7 @@ Software engineering Project
 - Cordova plugins
 - AngularJS
 - JQuery, AJAX (server http communication)
+- Google maps JavaScript API
 
 => Database, Server
 - MySQL
