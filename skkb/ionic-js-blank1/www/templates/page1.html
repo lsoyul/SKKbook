@@ -47,7 +47,7 @@
                             </a>
 
                             <button class="button icon-right ion-star button-positive">Favorites</button>
-                            <a class="button icon-right ion-chevron-right button-calm">Buy now</a>
+                            <a class="button icon-right ion-chevron-right button-calm" ng-click="buyItem(itemUnit)" >Buy now</a>
 
                     </article>
                 </div>
@@ -63,7 +63,7 @@
                                 <i class="icon ion-checkmark"></i>
                                 <h2>{{itemUnit.name_prod}}</h2>
                             </a>
-                            <a class="item item-icon-left" href="#">
+                            <a class="item item-icon-left">
                                 <i class="icon ion-android-person"></i>
                                 <p>{{itemUnit.id_seller}}</p>
                             </a>
@@ -81,7 +81,7 @@
                             </a>
 
                             <button class="button icon-right ion-star button-positive">Favorites</button>
-                            <a class="button icon-right ion-chevron-right button-calm">Buy now</a>
+                            <a class="button icon-right ion-chevron-right button-calm"ng-click="buyItem(itemUnit)">Buy now</a>
                         
                     </article>
                 </div>

@@ -1,0 +1,63 @@
+﻿
+<ion-view cache-view="false" view-title="Books for you!">
+    
+
+    <ion-pane>
+        <ion-content>
+            <ion-refresher pulling-text="Pull to refresh..."
+                           on-refresh="doRefresh()">
+            </ion-refresher>
+
+            <ion-nav-view></ion-nav-view>
+            <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        수강과목 선택
+                    </div>
+                    <select ng-model="subjectSelect">
+                        <option>미적분학</option>
+                        <option selected>선형대수</option>
+                        <option>소프트웨어공학</option>
+                        <option>일반물리학</option>
+                    </select>
+                </label>
+
+            </div>
+            <section class="list">
+
+                <div class="card" ng-repeat="itemUnit in ItemList | filter:subjectSelect">
+                    <article class="item item-text-wrap">
+                        <img css style="width:200px; height:200px;" src="http://sgykim15.cafe24.com/teamf/upload/{{itemUnit.name_img}}" />
+                        <div class="list">
+                            <a class="item item-icon-left">
+                                <i class="icon ion-checkmark"></i>
+                                <h2>{{itemUnit.name_prod}}</h2>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-android-person"></i>
+                                <p>{{itemUnit.id_seller}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-chatbox-working"></i>
+                                <p>{{itemUnit.description}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-wrench"></i>
+                                <p>물품상태: {{itemUnit.status}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-ios-arrow-forward"></i>
+                                <p>희망가격: {{itemUnit.price}} 원</p>
+                            </a>
+
+                            <button class="button icon-right ion-star button-positive">Favorites</button>
+                            <a class="button icon-right ion-chevron-right button-calm" ng-click="buyItem(itemUnit)">Buy now</a>
+
+                    </article>
+                </div>
+
+            </section>
+
+        </ion-content>
+    </ion-pane>
+</ion-view>

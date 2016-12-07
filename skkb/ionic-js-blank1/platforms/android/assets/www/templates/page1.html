@@ -1,5 +1,9 @@
 ﻿
-<ion-view cache-view="false" view-title="page1">
+<ion-view cache-view="false" view-title="Books on Sale">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-android-search" ng-click="doSearch()"></button>
+    </ion-nav-buttons>
+    
     <ion-pane>
         <ion-content>
             <ion-refresher pulling-text="Pull to refresh..."
@@ -7,15 +11,78 @@
             </ion-refresher>
 
             <ion-nav-view></ion-nav-view>
-           
-            <section class="list">
 
+           
+
+            <section class="list" ng-if="isSearchMode == true">
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Enter your book or seller</span>
+                    <input type="text" ng-model="searchByBookName" placeholder="A book or nickname of seller">
+                </label>
+
+                <div class="card" ng-repeat="itemUnit in ItemList | filter:searchByBookName">
+                    <article class="item item-text-wrap">
+                        <img css style="width:200px; height:200px;" src="http://sgykim15.cafe24.com/teamf/upload/{{itemUnit.name_img}}" />
+                        <div class="list">
+                            <a class="item item-icon-left">
+                                <i class="icon ion-checkmark"></i>
+                                <h2>{{itemUnit.name_prod}}</h2>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-android-person"></i>
+                                <p>{{itemUnit.id_seller}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-chatbox-working"></i>
+                                <p>{{itemUnit.description}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-wrench"></i>
+                                <p>물품상태: {{itemUnit.status}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-ios-arrow-forward"></i>
+                                <p>희망가격: {{itemUnit.price}} 원</p>
+                            </a>
+
+                            <button class="button icon-right ion-star button-positive">Favorites</button>
+                            <a class="button icon-right ion-chevron-right button-calm" ng-click="buyItem(itemUnit)" >Buy now</a>
+
+                    </article>
+                </div>
+
+            </section>
+
+            <section class="list" ng-if="isSearchMode == false">
                 <div class="card" ng-repeat="itemUnit in ItemList track by $index">
                     <article class="item item-text-wrap" >
                         <img css style="width:200px; height:200px;" src="http://sgykim15.cafe24.com/teamf/upload/{{itemUnit.name_img}}" />
-                        <h2>{{itemUnit.name_prod}}</h2>
-                        <p>{{itemUnit.id_user}}</p>
-                        <p>{{itemUnit.description}}</p>
+                        <div class="list">
+                            <a class="item item-icon-left">
+                                <i class="icon ion-checkmark"></i>
+                                <h2>{{itemUnit.name_prod}}</h2>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-android-person"></i>
+                                <p>{{itemUnit.id_seller}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-chatbox-working"></i>
+                                <p>{{itemUnit.description}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-wrench"></i>
+                                <p>물품상태: {{itemUnit.status}}</p>
+                            </a>
+                            <a class="item item-icon-left">
+                                <i class="icon ion-ios-arrow-forward"></i>
+                                <p>희망가격: {{itemUnit.price}} 원</p>
+                            </a>
+
+                            <button class="button icon-right ion-star button-positive">Favorites</button>
+                            <a class="button icon-right ion-chevron-right button-calm"ng-click="buyItem(itemUnit)">Buy now</a>
+                        
                     </article>
                 </div>
 

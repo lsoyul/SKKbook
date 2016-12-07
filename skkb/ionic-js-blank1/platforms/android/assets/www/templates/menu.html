@@ -27,11 +27,58 @@
                     책/서적
                 </ion-item>
                 <ion-item menu-close href="#/app/page2">
-                    구매목록
+                    거래현황
                 </ion-item>
+                <ion-item menu-close href="#/app/mySellPage">
+                    나의 판매목록
+                </ion-item>
+
+                <ion-item menu-close href="#/app/map">
+                    약속장소 확인
+                </ion-item>
+
                 <ion-item menu-close href="#/app/addTimeTable">
-                    시간표 만들기
+                    <p>
+                        시간표 선택
+                        <label>
+                            <select class="ion-input-select">
+
+                                <option>1학년 1학기</option>
+                                <option>1학년 2학기</option>
+                                <option>2학년 1학기</option>
+                                <option>2학년 2학기</option>
+                                <option>3학년 1학기</option>
+                                <option>3학년 2학기</option>
+                                <option>4학년 1학기</option>
+                            </select>
+                            </label>
+</p>
+                    > 시간표 확인
+                    <label>
+                       
+                    </label>
+
                 </ion-item>
+
+                <ion-item menu-close href="#/app/recommendBooks">
+                    <div class="item item-divider">
+                        수강과목 중고서적 찾기
+                    </div>
+
+                    <a class="item" ng-click="setSubject('미적분학')" href="#/app/recommendBooks">
+                        미적분학
+                    </a>
+                    <a class="item" ng-click="setSubject('선형대수')" href="#/app/recommendBooks">
+                        선형대수
+                    </a>
+                    <a class="item" ng-click="setSubject('소프트웨어')" href="#/app/recommendBooks">
+                        소프트웨어공학
+                    </a>
+                    <a class="item" ng-click="setSubject('일반물리')" href="#/app/recommendBooks">
+                        일반물리학
+                    </a>
+                </ion-item>
+
                 <ion-item menu-close>
                     hide
                 </ion-item>

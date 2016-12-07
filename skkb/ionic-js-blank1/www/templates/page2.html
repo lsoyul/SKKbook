@@ -1,5 +1,58 @@
-﻿<ion-view view-title="Page2">
-    <ion-content>
-        <h1>page2_content</h1>
-    </ion-content>
+﻿
+<ion-view cache-view="false" view-title="Transaction Status">
+
+    <ion-pane>
+        <ion-content>
+            <ion-refresher pulling-text="Pull to refresh..."
+                           on-refresh="doRefreshTran()">
+            </ion-refresher>
+            <ion-nav-view></ion-nav-view>
+
+            <section class="list">
+                <div class="card" ng-repeat="tranUnit in TranList | filter:yourName">
+                    <article class="item item-text-wrap">
+                        <div class="list">
+                            <a class="item item-icon-left">
+                                <i class="icon ion-checkmark"></i>
+                                <h2>{{tranUnit.prod_name}}</h2>
+                            </a>
+
+                            <div class="row">
+                                <div class="col col-35">{{tranUnit.seller}}-판매</div>
+                                <div class="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon ion-arrow-right-c"></i></div>
+                                <div class="col">{{tranUnit.buyer}}-구매</div>
+                            </div>
+                            
+                            <a class="item item-icon-left">
+                                <i class="icon ion-android-call"></i>
+                                <p>
+                                    {{tranUnit.seller}}: 123-456-7890
+                                </p> 
+                                <p>
+                                    {{tranUnit.buyer}}: {{pNumber}}
+                                </p> 
+                            </a>
+
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    거래장소
+                                </div>
+                                <select>
+                                    <option>성균관대(수원) 오픈소스 카페</option>
+                                    <option selected>성균관대(수원) 교보문고 앞</option>
+                                    <option>성균관대(수원) 후문 앞</option>
+                                </select>
+                            </label>
+                            <ion-list>
+
+                                <ion-checkbox ng-model="lastCheck">거래완료 시 체크!</ion-checkbox>
+
+                            </ion-list>
+
+                    </article>
+                </div>
+
+            </section>
+        </ion-content>
+    </ion-pane>
 </ion-view>
