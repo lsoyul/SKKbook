@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('shoppingApp', ['ionic', 'shoppingApp.controller', 'ngCordova', 'daypilot']);
+var app = angular.module('shoppingApp', ['ionic', 'shoppingApp.controller', 'ngCordova', 'daypilot', 'ngMaps']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(0);
@@ -50,7 +50,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             'menuContent': {
                 templateUrl: 'templates/page2.html'
             }
-        }
+        },
+
+        controller: 'mainController'
     })
     .state('app.addTimeTable', {
         url: '/addTimeTable',
@@ -62,6 +64,36 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
         controller: 'mainController'
 
+    })
+    .state('app.mySellPage', {
+        url: '/mySellPage',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/mySellPage.html'
+            }
+        },
+
+        controller: 'mainController'
+    })
+    .state('app.map', {
+        url: '/map',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/map.html'
+            }
+        },
+
+        controller: 'mainController'
+    })
+    .state('app.recommendBooks', {
+        url: '/recommendBooks',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/recommendBooks.html'
+            }
+        },
+
+        controller: 'mainController'
     })
 
     $urlRouterProvider.otherwise('/welcome');
@@ -103,7 +135,7 @@ app.directive("fileInput", function ($parse) {
 })
 
 app.factory('dataShare', function () {
-    var savedData = {}
+    var savedData = {};
     function set(data) {
         savedData = data;
     }

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app='App'>
+
+<head>
+    <style type='text/css'>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .google-map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <map ng-transclude class="google-map" center="map.center" options="map.options" zoom="14">
+
+        <marker position="marker.position" decimals="marker.decimals" options="marker.options"></marker>
+        <infowindow position="infowindow.position">
+            <h6> 성균관대학교 수원캠퍼스 교보문고앞</h6>
+        </infowindow>
+    </map>
+</body>
+
+</html>

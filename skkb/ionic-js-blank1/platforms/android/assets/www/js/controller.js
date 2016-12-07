@@ -2,13 +2,14 @@
 
 .controller('mainController', function ($scope, $ionicModal, $timeout, $http, $state,$ionicPopup,  dataShare) {
     
-   
+    $scope.isSearchMode = false;
 
     $scope.loginData = {};
     $scope.yourName = "Unknown";
 
     $scope.yourName = dataShare.get().name;
-
+    $scope.pNumber = dataShare.get().pnumber;
+    
     
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/sellModal.html', {
@@ -16,6 +17,13 @@
     }).then(function (modal) {
         $scope.modal = modal;
     });
+
+    // Do search
+    $scope.doSearch = function(){
+        if ($scope.isSearchMode == false) $scope.isSearchMode = true;
+        else
+            $scope.isSearchMode = false;
+    };
     
     // Triggered in the login modal to close it
     $scope.closeSellPage = function () {
@@ -103,8 +111,46 @@
         $scope.ItemList = "error";
     })
 
+    $scope.TranList = "";
+    $scope.TranPeople = "";
+
+    $http
+        ({
+            method: "GET",
+            url: "http://sgykim15.cafe24.com/teamf/getTransactionList.php"
+
+        })
+    .then(function (tranData) {
+
+        $scope.TranList = tranData.data;
+        //$scope.ItemList = itemData.data;
+    }, function (tranData) {
+        $scope.TranList = "error";
+    })
+
+
     // Refresher
+    $scope.doRefreshTran = function () {
+        $http
+        ({
+            method: "GET",
+            url: "http://sgykim15.cafe24.com/teamf/getTransactionList.php"
+
+        })
+    .then(function (tranData) {
+
+        $scope.TranList = tranData.data;
+        //$scope.ItemList = itemData.data;
+    }, function (tranData) {
+        $scope.TranList = "error";
+    }).finally(function () {
+        // Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    });
+    };
+
     $scope.doRefresh = function () {
+
         $http
         ({
             method: "GET",
@@ -124,13 +170,80 @@
          });
     };
 
+    // Transaction Manager
+    $scope.prodData = {};
+    $scope.buyItem = function (prod) {
+        $scope.prodData = prod;
+        //
+        $http({
+            method: "POST",
+            url: "http://sgykim15.cafe24.com/teamf/insertTransaction.php",
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            data:
+            {
+                'prod_id': $scope.prodData.id,
+                'buyer': dataShare.get().name,
+                'seller': $scope.prodData.id_seller,
+                'prod_name': $scope.prodData.name_prod
+            }
+
+        });
+
+
+        //console.log($scope.prodData.name_prod);
+        
+
+    };
+
+    $scope.setSubject = function (subject) {
+        $scope.subjectSelect = subject;
+    };
+
+
     // Time table
     $scope.events = [{
-        "id": "12",
+        "id": "1",
         "text": "미적분학",
-        "start": "2016-12-07T11:30:00",
-        "end": "2016-12-07T16:30:00"
-    }];
+        "start": "2016-12-04T10:30:00",
+        "end": "2016-12-04T11:45:00"
+    },
+    {
+        "id": "2",
+        "text": "미적분학",
+        "start": "2016-12-06T09:00:00",
+        "end": "2016-12-06T10:15:00"
+    },
+    {
+        "id": "3",
+        "text": "선형대수",
+        "start": "2016-12-05T10:30:00",
+        "end": "2016-12-05T11:45:00"
+    },
+    {
+        "id": "4",
+        "text": "선형대수",
+        "start": "2016-12-07T09:00:00",
+        "end": "2016-12-07T10:15:00"
+    },
+    {
+        "id": "5",
+        "text": "소프트웨어공학",
+        "start": "2016-12-04T15:00:00",
+        "end": "2016-12-04T16:15:00"
+    },
+    {
+        "id": "6",
+        "text": "소프트웨어공학",
+        "start": "2016-12-06T12:00:00",
+        "end": "2016-12-06T13:15:00"
+    },
+    {
+        "id": "7",
+        "text": "일반물리학",
+        "start": "2016-12-08T13:00:00",
+        "end": "2016-12-08T16:30:00"
+    }
+    ];
 
     $scope.dayConfig = {
         visible: false,
@@ -141,7 +254,27 @@
         viewType: "Week"
     };
 
-    
+    $scope.map = {
+        center: [37.2930, 126.9757],
+        options: function () {
+            return {
+                streetViewControl: false,
+                scrollwheel: false
+            }
+        }
+    };
+
+    $scope.marker = {
+        position: [37.2930, 126.9757],
+        decimals: 4,
+        options: function () {
+            return { draggable: true };
+        }
+    }
+
+    $scope.infowindow = {
+        position: [37.2930, 126.9757]
+    }
 })
 
 .controller('Page1Ctrl', function ($scope, $ionicModal, $timeout) {
